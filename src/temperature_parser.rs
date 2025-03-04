@@ -1,7 +1,6 @@
 //! # Temperature Data Processing
 //!
-//! This module reads temperature data from a file, parses it, and performs piecewise linear interpolation.
-//! It writes the interpolated results to separate output files for each core.
+//! This module reads temperature data from a file, and parses it.
 
 use regex::Regex;
 use std::cell::LazyCell;

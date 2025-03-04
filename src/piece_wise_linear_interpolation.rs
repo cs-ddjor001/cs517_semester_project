@@ -4,12 +4,9 @@ use std::io::Write;
 /// Performs piecewise linear interpolation on the temperature data and writes results to files.
 ///
 /// # Arguments
-/// * `base_file_name` - The base name for the output files.
 /// * `times` - A vector of time steps.
-/// * `readings_core_0` - A vector of vectors containing temeperature readings for core 0
-/// * `readings_core_1` - A vector of vectors containing temeperature readings for core 1
-/// * `readings_core_2` - A vector of vectors containing temeperature readings for core 2
-/// * `readings_core_3` - A vector of vectors containing temeperature readings for core 3.
+/// * `readings_core` - A vector of vectors containing temeperature readings for a specific core.
+/// * `output_file` - The name for the output files.
 pub fn piece_wise_linear_interpolation(
     times: &Vec<f64>,
     readings_core: Vec<f64>,
