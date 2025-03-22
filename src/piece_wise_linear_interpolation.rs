@@ -25,5 +25,4 @@ pub fn piece_wise_linear_interpolation(
         )
         .expect("Failed to write to file");
     }
-    
 }

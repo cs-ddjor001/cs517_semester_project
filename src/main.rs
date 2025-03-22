@@ -1,6 +1,5 @@
-use std::path::Path;
 use std::fs::File;
-use std::io::Write;
+use std::path::Path;
 
 use cs517_semester_project::least_squares_approximation;
 use cs517_semester_project::piece_wise_linear_interpolation;
@@ -46,7 +45,7 @@ fn main() {
     let file_00 = File::create(&output_file_00).expect("Failed to create file");
     let file_01 = File::create(&output_file_01).expect("Failed to create file");
     let file_02 = File::create(&output_file_02).expect("Failed to create file");
-    let file_03 = File::create(&output_file_03).expect("Failed to create file");    
+    let file_03 = File::create(&output_file_03).expect("Failed to create file");
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -54,11 +53,7 @@ fn main() {
         &file_00,
     );
 
-    /* least_squares_approximation::least_squares_approximation(
-        &times,
-        readings_core_0,
-        output_file_00,
-    );*/
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_0, file_00);
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -66,11 +61,7 @@ fn main() {
         &file_01,
     );
 
-    /*least_squares_approximation::least_squares_approximation(
-        &times,
-        readings_core_1,
-        output_file_01,
-    );*/
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_1, file_01);
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -78,11 +69,7 @@ fn main() {
         &file_02,
     );
 
-    /*least_squares_approximation::least_squares_approximation(
-        &times,
-        readings_core_2,
-        output_file_02,
-    );*/
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_2, file_02);
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -90,9 +77,5 @@ fn main() {
         &file_03,
     );
 
-    /*least_squares_approximation::least_squares_approximation(
-        &times,
-        readings_core_3,
-        output_file_03,
-    );*/
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_3, file_03);
 }
