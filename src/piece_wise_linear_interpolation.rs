@@ -6,14 +6,12 @@ use std::io::Write;
 /// # Arguments
 /// * `times` - A vector of time steps.
 /// * `readings_core` - A vector of vectors containing temeperature readings for a specific core.
-/// * `output_file` - The name for the output files.
+/// * `file` - The file to write output to.
 pub fn piece_wise_linear_interpolation(
     times: &Vec<f64>,
-    readings_core: Vec<f64>,
-    output_file: String,
+    readings_core: &Vec<f64>,
+    mut file: &File,
 ) {
-    let mut file = File::create(&output_file).expect("Failed to create file");
-
     for k in 0..times.len() - 1 {
         let m = (readings_core[k + 1] - readings_core[k]) / (times[k + 1] - times[k]);
         let b = readings_core[k + 1] - m * times[k + 1];
@@ -27,4 +25,5 @@ pub fn piece_wise_linear_interpolation(
         )
         .expect("Failed to write to file");
     }
+    
 }
