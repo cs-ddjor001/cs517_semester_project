@@ -7,7 +7,7 @@ use std::io::Write;
 /// * `times` - A vector of time steps.
 /// * `readings_core` - A vector of vectors containing temeperature readings for a specific core.
 /// * `file` - The file to write output to.
-pub fn least_squares_approximation(times: &Vec<f64>, readings_core: &Vec<f64>, mut file: File) {
+pub fn least_squares_approximation(times: &Vec<f64>, readings_core: &Vec<f64>, mut file: &File) {
     let k = times.len();
 
     let mut sum_x = 0.0;

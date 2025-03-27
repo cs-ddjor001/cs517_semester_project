@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::path::Path;
 
+use cs517_semester_project::cubic_spline_interpolation;
 use cs517_semester_project::least_squares_approximation;
 use cs517_semester_project::piece_wise_linear_interpolation;
 use cs517_semester_project::temperature_parser;
@@ -31,10 +32,6 @@ fn main() {
         } else {
             eprintln!("Warning: Incomplete temperature data on some lines.");
         }
-
-        if times.len() == 5 {
-            break;
-        }
     }
 
     let output_file_00 = format!("{}-core-00.txt", base_file_name);
@@ -53,7 +50,9 @@ fn main() {
         &file_00,
     );
 
-    least_squares_approximation::least_squares_approximation(&times, &readings_core_0, file_00);
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_0, &file_00);
+
+    cubic_spline_interpolation::cubic_spline_interpolation(&times, &readings_core_0, &file_00);
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -61,7 +60,9 @@ fn main() {
         &file_01,
     );
 
-    least_squares_approximation::least_squares_approximation(&times, &readings_core_1, file_01);
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_1, &file_01);
+
+    cubic_spline_interpolation::cubic_spline_interpolation(&times, &readings_core_1, &file_01);
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -69,7 +70,9 @@ fn main() {
         &file_02,
     );
 
-    least_squares_approximation::least_squares_approximation(&times, &readings_core_2, file_02);
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_2, &file_02);
+
+    cubic_spline_interpolation::cubic_spline_interpolation(&times, &readings_core_2, &file_02);
 
     piece_wise_linear_interpolation::piece_wise_linear_interpolation(
         &times,
@@ -77,5 +80,7 @@ fn main() {
         &file_03,
     );
 
-    least_squares_approximation::least_squares_approximation(&times, &readings_core_3, file_03);
+    least_squares_approximation::least_squares_approximation(&times, &readings_core_3, &file_03);
+
+    cubic_spline_interpolation::cubic_spline_interpolation(&times, &readings_core_3, &file_03);
 }
